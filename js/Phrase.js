@@ -3,7 +3,10 @@
  * Phrase.js */
 
 //to create a Phrase class to handle the creation of phrases.
-class phrase {
+class Phrase {
+    constructor (phrase) {
+        this.phrase = phrase
+    }
 //The phrase class should have these three methods
    addPhraseToDisplay(){
     // this adds letter placeholders to the display when the game starts. 
