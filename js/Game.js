@@ -14,7 +14,9 @@
       this.activePhrase = activePhrase;
     }
     startGame(){
-        //hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
+        //hides the start screen overlay
+        
+        //calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         getRandomPhrase()
     }
     getRandomPhrase(){
