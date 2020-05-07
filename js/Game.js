@@ -3,7 +3,7 @@
  * Game.js */
 
  //to create a Game class with methods for starting and ending the game, handling interactions, getting a random phrase, checking for a win, and removing a life from the scoreboard.
-
+ const game = new Game();
  /*
    The class should include a constructor that initializes the following properties:
         missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.

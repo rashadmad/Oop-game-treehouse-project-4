@@ -3,7 +3,7 @@
  * Phrase.js */
 
 //to create a Phrase class to handle the creation of phrases.
-
+const phrase = new Phrase();
 /* 
 The phrase class should have these three methods
    addPhraseToDisplay()
