@@ -15,9 +15,11 @@
     }
     startGame(){
         //hides the start screen overlay
-        
-        //calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
+        overlay.style.display = "none"
+        //calls the getRandomPhrase() method
         getRandomPhrase()
+        //sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
+        //activePhrase = 
     }
     getRandomPhrase(){
         //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
