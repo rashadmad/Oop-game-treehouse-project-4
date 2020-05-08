@@ -3,10 +3,14 @@
  * app.js */
 
  //create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons.
- const game = new Game();
+ 
+ const createNewGame = () => {
+    return game = new Game();
+ }
 
  //Add a click event listener to the "Start Game" button which creates a new Game object and starts the game by calling the startGame() method.
  startButton.addEventListener("click", function(){ 
+    createNewGame()
     game.startGame()
 }); 
  
