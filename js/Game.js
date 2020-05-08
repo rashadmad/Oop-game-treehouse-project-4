@@ -17,14 +17,18 @@
         //hides the start screen overlay
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
-        activePhrase = this.getRandomPhrase();
+        //activePhrase = this.getRandomPhrase();
     }
-    createPhrases = () => {
+    createPhrases = (newArrayItem) => {
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
-        const phrases = ["Frankly my dear I dont give a damn",,]
-        return 
+        let newPhaseArray = phraseArray;
+        if(newArrayItem) {
+            newPhaseArray.push(newArrayItem);
+        }
+        return newPhaseArray
     }
-    getRandomPhrase = () => phrases[generateRandomNumber(max,min)];
+    
+    getRandomPhrase = () => phraseArray[generateRandomNumber(phraseArray.length,0)];
         //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     handleInteraction(){
         // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
