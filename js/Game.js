@@ -28,8 +28,9 @@
         return this.phrases
     }
     
+    //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
-        //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
+       
     handleInteraction(){
         // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
         // Disable the selected letter’s onscreen keyboard button.
