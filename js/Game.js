@@ -19,13 +19,20 @@
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         //activePhrase = this.getRandomPhrase();
     }
-    createPhrases = (newArrayItem) => {
+    createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
-        let newPhaseArray = phraseArray;
-        if(newArrayItem) {
-            newPhaseArray.push(newArrayItem);
-        }
-        return newPhaseArray
+    const    
+        newPhrase1 = new Phrase("Frankly, my dear"),
+        newPhrase2 = new Phrase("I don't give a damn."),
+        newPhrase3 = new Phrase("I'm going to make him an offer he can't refuse"),
+        newPhrase4 = new Phrase("Here's looking at you, kid."),
+        newPhrase5 = new Phrase("May the force be with you.")
+
+    this.phrases.push(newPhrase1)
+    this.phrases.push(newPhrase2)
+    this.phrases.push(newPhrase3)
+    this.phrases.push(newPhrase4)
+    this.phrases.push(newPhrase5)
     }
     
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)];
