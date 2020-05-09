@@ -21,18 +21,13 @@
     }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
-    const    
-        newPhrase1 = new Phrase("Frankly, my dear"),
-        newPhrase2 = new Phrase("I don't give a damn."),
-        newPhrase3 = new Phrase("I'm going to make him an offer he can't refuse"),
-        newPhrase4 = new Phrase("Here's looking at you, kid."),
-        newPhrase5 = new Phrase("May the force be with you.")
+        //I need to create a diffrent varible name for each new object
 
-    this.phrases.push(newPhrase1)
-    this.phrases.push(newPhrase2)
-    this.phrases.push(newPhrase3)
-    this.phrases.push(newPhrase4)
-    this.phrases.push(newPhrase5)
+        phraseArray.forEach(phraseString => {
+            const phraseObject = new Phrase(phraseString);
+            this.phrases.push(phraseObject)
+        })
+        return this.phrases
     }
     
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)];
