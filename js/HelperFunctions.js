@@ -6,7 +6,7 @@ const phraseFillteredOfPunctuation = (stringToBeFilltered) => stringToBeFilltere
 const emptyLetterBox = (letter) => {
     const emptyBox = document.createElement('li');
     emptyBox.classList += "hide" + " " + "letter" + " " + letter
-    emptyBox.createTextNode = letter;
+    emptyBox.innerHTML = letter;
     phraseContainer.appendChild(emptyBox); 
 } 
 const emptySpace = () => {
