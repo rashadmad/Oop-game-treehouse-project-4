@@ -9,11 +9,16 @@ class Phrase {
     }
 //The phrase class should have these three methods
    addPhraseToDisplay(){
-
     // this adds letter placeholders to the display when the game starts. 
-    
-    // See the example_phrase_html.txt file for an example of what the rendered HTML for a phrase should look like when the game starts, including any id or class attributes needed. 
+    const stringToArray = this.phrase.split('');
     // When the player correctly guesses a letter, the empty box is replaced with the matched letter (see the showMatchedLetter() method below). 
+    stringToArray.forEach(item => {
+        if(item === " "){
+            emptySpace();
+        } else {
+            emptyLetterBox(item); 
+        }
+    })
     // Make sure the phrase displayed on the screen uses the letter CSS class for letters and the space CSS class for spaces. 
    } 
    checkLetter(){
