@@ -1,7 +1,7 @@
 //generates a random number
 const generateRandomNumber = (max,min) => Math.floor(Math.random() * (+max - +min)) + +min;    
 //create a function for filltering outpunctuatiton
-const phraseFillteredOfPunctuation = (stringToBeFilltered) => stringToBeFilltered.replace(/[.,\/#!$%.?,\^&\*;:{}=\-_`~()]/g,"")
+const phraseFillteredOfPunctuation = (stringToBeFilltered) => stringToBeFilltered.replace(/[.,\/#!$%.?,'\^&\*;:{}=\-_`~()]/g,"")
 // Each letter is presented by an empty box, one li element for each letter. 
 const emptyLetterBox = (letter) => {
     const emptyBox = document.createElement('li');
