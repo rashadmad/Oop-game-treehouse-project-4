@@ -18,8 +18,8 @@
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         this.createPhrases()
-        this.getRandomPhrase()
-        return this.getRandomPhrase()
+        this.activePhrase = this.getRandomPhrase()
+        return this.activePhrase
     }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
@@ -33,6 +33,7 @@
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
     handleInteraction(){
+        console.log("hendle your interactions")
         // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
         // Disable the selected letter’s onscreen keyboard button.
         // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.

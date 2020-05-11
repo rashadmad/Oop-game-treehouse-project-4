@@ -9,3 +9,7 @@ const phraseArray = ["Frankly, my dear, I don't give a damn.", "I'm going to mak
 
 //need to have a place to add
 const phraseContainer = document.getElementById('phrase').getElementsByTagName('ul')[0];;
+
+//need to make all keys interactive
+const keys = document.querySelectorAll('.key')
+

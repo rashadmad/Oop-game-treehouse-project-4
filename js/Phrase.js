@@ -23,7 +23,6 @@ class Phrase {
     // Make sure the phrase displayed on the screen uses the letter CSS class for letters and the space CSS class for spaces. 
    } 
    checkLetter(){
-       console.log("checks letter")
     // checks to see if the letter selected by the player matches a letter in the phrase.
    }
    showMatchedLetter(){
