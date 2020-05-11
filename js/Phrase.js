@@ -7,20 +7,22 @@ class Phrase {
     constructor (phrase) {
         this.phrase = phrase;
     }
+    //need to make sure the phrase is lowercased and free of punctuation and an array of letters
+    fillterPhrase(){
+        const stringToArray = phraseFillteredOfPunctuationAndLowerCase(this.phrase).split('');
+        return stringToArray
+    }
     //The phrase class should have these three methods
     addPhraseToDisplay(){
-    console.log(this.phrase)
     // this adds letter placeholders to the display when the game starts. 
-    const stringToArray = phraseFillteredOfPunctuationAndLowerCase(this.phrase).split('');
     // When the player correctly guesses a letter, the empty box is replaced with the matched letter (see the showMatchedLetter() method below). 
-    stringToArray.forEach(item => {
+    this.fillterPhrase().forEach(item => {
         if(item === " "){
             emptySpace();
         } else {
             emptyLetterBox(item); 
         }
     })
-    // Make sure the phrase displayed on the screen uses the letter CSS class for letters and the space CSS class for spaces. 
    } 
    checkLetter(){
     // checks to see if the letter selected by the player matches a letter in the phrase.

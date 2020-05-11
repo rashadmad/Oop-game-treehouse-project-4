@@ -3,6 +3,8 @@ const generateRandomNumber = (max,min) => Math.floor(Math.random() * (+max - +mi
 //create a function for filltering outpunctuatiton
 const phraseFillteredOfPunctuationAndLowerCase = (stringToBeFilltered) => stringToBeFilltered.toLowerCase().replace(/[.,\/#!$%.?,'\^&\*;:{}=\-_`~()]/g,"")
 // Each letter is presented by an empty box, one li element for each letter. 
+
+    // Make sure the phrase displayed on the screen uses the letter CSS class for letters and the space CSS class for spaces. 
 const emptyLetterBox = (letter) => {
     const emptyBox = document.createElement('li');
     emptyBox.classList += "hide" + " " + "letter" + " " + letter

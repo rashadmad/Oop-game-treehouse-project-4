@@ -19,6 +19,7 @@
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         this.createPhrases()
         this.activePhrase = this.getRandomPhrase()
+        console.log(this.activePhrase.phrase)
         return this.activePhrase
     }
     createPhrases(){ 
@@ -33,16 +34,20 @@
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
     handleInteraction(selectedButton){
-        const stringToArray = this.activePhrase.split('')
+        const stringToArray = phraseFillteredOfPunctuationAndLowerCase(this.activePhrase.phrase).split('');
         // this method controls most of the game logic. 
         // It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-        stringToArray.split(''.forEach(letter => {
+        stringToArray.forEach(letter => {
             if(letter === selectedButton){
                 // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
                 selectedButton.classList.add('chosen');
+                //showMatchedLetter()
+                //checkForWin()
+                //gameOver()
             } else {
                 // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
                 selectedButton.classList.add('wrong');
+                //removeLife()
             }
         })
     }
