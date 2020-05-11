@@ -32,12 +32,19 @@
     //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
-    handleInteraction(){
-        console.log("hendle your interactions")
-        // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-        // Disable the selected letter’s onscreen keyboard button.
-        // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
-        // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
+    handleInteraction(selectedButton){
+        const stringToArray = this.activePhrase.split('')
+        // this method controls most of the game logic. 
+        // It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
+        stringToArray.split(''.forEach(letter => {
+            if(letter === selectedButton){
+                // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
+                selectedButton.classList.add('chosen');
+            } else {
+                // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
+                selectedButton.classList.add('wrong');
+            }
+        })
     }
     removeLife(){
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
