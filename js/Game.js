@@ -17,15 +17,16 @@
         //hides the start screen overlay
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
-        //activePhrase = this.getRandomPhrase();
+        this.createPhrases()
+        this.getRandomPhrase()
+        return this.getRandomPhrase()
     }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
-        phraseArray.forEach(phraseString => {
+        var myArray = phraseArray.forEach(phraseString => {
             const phraseObject = new Phrase(phraseString);
             this.phrases.push(phraseObject)
         })
-        return this.phrases
     }
     
     //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
