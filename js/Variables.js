@@ -13,3 +13,4 @@ const phraseContainer = document.getElementById('phrase').getElementsByTagName('
 //need to make all keys interactive
 const keys = document.querySelectorAll('.key')
 
+

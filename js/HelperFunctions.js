@@ -17,3 +17,15 @@ const emptySpace = () => {
     emptySpace.innerText = " ";
     phraseContainer.appendChild(emptySpace);
 }
+//need to be able to show a matched letter
+const showMatchedLetter = (letterToMatch) => {
+    const emptyLetterBoxes = document.querySelectorAll('.letter')
+    emptyLetterBoxes.forEach(letter => {
+        if (letter.classList.contains(letterToMatch)){
+            letter.classList.remove("hide")
+            letter.classList.add("show")
+        } else {
+            console.log("no match found")
+        }
+    })
+}
