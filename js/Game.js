@@ -61,7 +61,8 @@
         const hearts = document.querySelectorAll('.tries')
         const amountOfHearts = this.healthPoints - 1
         console.log(amountOfHearts)
-        hearts[amountOfHearts].style.display = "none";
+        hearts[amountOfHearts].childNodes[0].src = "images/lostHeart.png";
+        console.log(hearts[amountOfHearts].childNodes[0].src)
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
         this.healthPoints = this.healthPoints - 1
         console.log(this.healthPoints)
