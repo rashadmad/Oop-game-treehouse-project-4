@@ -13,4 +13,15 @@ const phraseContainer = document.getElementById('phrase').getElementsByTagName('
 //need to make all keys interactive
 const keys = document.querySelectorAll('.key')
 
+//Need to be able punish user for wrong selections
+let lifePoints = 5;
+
+//game end messages
+const gameOverContainer = document.getElementById('game-over-message')
+const gameWinMessage = "Congratulations You Won"
+const gameLoseMessage = "Sorry you failed try Agin"
+
+//scoreBoard
+const scoreboard = document.getElementById('scoreboard').childNodes[0]
+
 

@@ -38,6 +38,5 @@ const checkForWin = () => {
             youWon = false
         }
     })
-    console.log(youWon)
     return youWon
 }

@@ -5,13 +5,15 @@
  //to create a Game class with methods for starting and ending the game, handling interactions, getting a random phrase, checking for a win, and removing a life from the scoreboard.
  //The class should include a constructor that initializes the following properties:
  class Game {
-    constructor (missed= 0, phrases= [], activePhrase= null) {
+    constructor (missed= 0, phrases= [], activePhrase= null, healthPoints= 5) {
     //missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.
       this.missed = missed;
     //phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
       this.phrases = phrases;
     //activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
       this.activePhrase = activePhrase;
+    //need to chart health
+      this.healthPoints = healthPoints;
     }
     startGame(){
         //hides the start screen overlay
@@ -34,29 +36,46 @@
        
     handleInteraction(selectedButton){
         const stringToArray = phraseFillteredOfPunctuationAndLowerCase(this.activePhrase.phrase).split('');
+        let matchFound = false;
         selectedButton.classList.add('chosen');
         // this method controls most of the game logic. 
         // It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
         stringToArray.forEach(letter => {
             if(letter === selectedButton.innerHTML){
+                matchFound = true;
                 // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
                 showMatchedLetter(selectedButton.innerHTML)
-                checkForWin()
-            } else {
-                // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
-                selectedButton.classList.add('wrong');
-                //removeLife()
+                if(checkForWin()){
+                    this.gameOver()
+                }
             }
         })
+
+        if(!matchFound){
+            selectedButton.classList.add('wrong');
+            this.removeLife()
+        } 
     }
     removeLife(){
+        // need to show feedback of life being lost
+        const hearts = document.querySelectorAll('.tries')
+        const amountOfHearts = this.healthPoints - 1
+        console.log(amountOfHearts)
+        hearts[amountOfHearts].style.display = "none";
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
+        this.healthPoints = this.healthPoints - 1
+        console.log(this.healthPoints)
+        //end the game when you have ran out of health
+        if(this.healthPoints === 0){
+            this.gameOver()
+        }
     }
-    checkForWin(){
-        // this method checks to see if the player has revealed all of the letters in the active phrase.
-    }  
     gameOver(){
-        // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
-        gameStartOverlay.style.display = "inline"
+        setTimeout(function(){ 
+            // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
+            gameStartOverlay.style.display = "inline"
+            // need to have a message to illustrate is some one has won or lost
+            gameOverContainer.innerHTML = checkForWin() ? gameWinMessage : gameWinMessagegameLoseMessage
+        }, 2000);
     }
  }
