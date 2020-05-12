@@ -41,8 +41,7 @@
             if(letter === selectedButton.innerHTML){
                 // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
                 showMatchedLetter(selectedButton.innerHTML)
-                //checkForWin()
-                //gameOver()
+                checkForWin()
             } else {
                 // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
                 selectedButton.classList.add('wrong');

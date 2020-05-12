@@ -24,8 +24,20 @@ const showMatchedLetter = (letterToMatch) => {
         if (letter.classList.contains(letterToMatch)){
             letter.classList.remove("hide")
             letter.classList.add("show")
-        } else {
-            console.log("no match found")
+        } 
+    })
+}
+//need to check if we have won or not
+const checkForWin = () => {
+    let youWon = true;
+    const emptyLetterBoxes = document.querySelectorAll('.letter')
+    
+    emptyLetterBoxes.forEach(letter => {
+    let hiddentItem = letter.classList.contains("hide")
+        if(hiddentItem){
+            youWon = false
         }
     })
+    console.log(youWon)
+    return youWon
 }
