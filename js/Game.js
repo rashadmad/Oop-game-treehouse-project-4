@@ -50,11 +50,8 @@
         }
     }
     removeLife(){
-        // need to show feedback of life being lost
         const amountOfHearts = this.healthPoints - 1;
-        const hearts = document.querySelectorAll('.tries')
-        const heart = hearts[amountOfHearts].childNodes[0];
-        heart.src = "images/lostHeart.png";
+        heart(amountOfHearts).src = "images/lostHeart.png";
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
         this.healthPoints = this.healthPoints - 1
         //end the game when you have ran out of health
@@ -62,13 +59,22 @@
             this.gameOver()
         }
     }
+    reset(){
+        //reset game
+        this.missed = 0;
+        this.phrases = [];
+        this.activePhrase = null;
+        this.healthPoints = 5;
+        gameStartOverlay.className = "start"
+
+    }
     gameOver(){
         setTimeout(function(){ 
             // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
             gameStartOverlay.style.display = "inline"
             // need to have a message to illustrate is some one has won or lost
             gameOverContainer.innerHTML = checkForWin() ? gameWinMessage : gameLoseMessage
-            console.log(gameOverContainer.innerHTML)
-        }, 2000);
+            gameStartOverlay.className = checkForWin() ? "win" : "lose"
+        }, 1000);
     }
  }
