@@ -34,27 +34,19 @@
     //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
-    handleInteraction(selectedButton){
-        const stringToArray = phraseFillteredOfPunctuationAndLowerCase(this.activePhrase.phrase).split('');
-        let matchFound = false;
-        selectedButton.classList.add('chosen');
+    handleInteraction(buttonClicked,matchFound){
+        buttonClicked.classList.add('chosen');
         // this method controls most of the game logic. 
-        // It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-        stringToArray.forEach(letter => {
-            if(letter === selectedButton.innerHTML){
-                matchFound = true;
-                // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
-                showMatchedLetter(selectedButton.innerHTML)
-                if(checkForWin()){
-                    this.gameOver()
-                }
+        if(matchFound){
+            // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
+            showMatchedLetter(buttonClicked.innerHTML)
+            if(checkForWin()){
+                this.gameOver()
             }
-        })
-
-        if(!matchFound){
-            selectedButton.classList.add('wrong');
+        } else {
+            buttonClicked.classList.add('wrong');
             this.removeLife()
-        } 
+        }
     }
     removeLife(){
         // need to show feedback of life being lost

@@ -15,7 +15,7 @@ game = new Game();
         key.addEventListener("click", (event) => { 
             // Disable the selected letter’s onscreen keyboard button.
             event.target.disabled = true;
-            game.handleInteraction(event.target)
+            game.handleInteraction(event.target,game.activePhrase.checkLetter(event.target))
         });  
     })
 }); 
