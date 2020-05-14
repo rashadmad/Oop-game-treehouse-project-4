@@ -16,6 +16,7 @@
       this.healthPoints = healthPoints;
     }
     startGame(){
+        this.reset()
         gameStartOverlay.className = "start"
         //need to reset all hearts to live hearts
         hearts.forEach(heart => {
@@ -26,18 +27,6 @@
             key.className = "key"
             key.disabled = false
         });
-        //remove letter boxes
-        phraseContainer.innerHTML = " "
-        //hides the start screen overlay
-        gameStartOverlay.style.display = "none"
-        //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
-        this.createPhrases()
-        this.activePhrase = this.getRandomPhrase()
-        this.activePhrase.addPhraseToDisplay()
-        gameStartOverlay.className = "start"
-        hearts.forEach(heart => {
-            heart.childNodes[0].src = "images/liveHeart.png";
-         });
         return this.activePhrase
     }
     createPhrases(){ 
@@ -62,6 +51,7 @@
             }
         } else {
             buttonClicked.classList.add('wrong');
+            console.log("remove heart")
             this.removeLife()
         }
     }
@@ -75,6 +65,20 @@
             heart(amountOfHearts).src = "images/lostHeart.png";
             //end the game when you have ran out of health
         }
+    }
+    reset(){
+        //remove letter boxes
+        phraseContainer.innerHTML = " "
+        //hides the start screen overlay
+        gameStartOverlay.style.display = "none"
+        //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
+        this.createPhrases()
+        this.activePhrase = this.getRandomPhrase()
+        this.activePhrase.addPhraseToDisplay()
+        gameStartOverlay.className = "start"
+        hearts.forEach(heart => {
+            heart.childNodes[0].src = "images/liveHeart.png";
+        });
     }
     gameOver(){
         setTimeout(function(){ 
