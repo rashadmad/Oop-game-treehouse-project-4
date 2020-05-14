@@ -21,7 +21,7 @@ let lifePoints = 5;
 //game end messages
 const gameOverContainer = document.getElementById('game-over-message')
 const gameWinMessage = "Congratulations You Won"
-const gameLoseMessage = "Sorry you failed, try Agin?"
+const gameLoseMessage = "Sorry Uou failed, Try Again?"
 
 //scoreBoard
 const scoreboard = document.getElementById('scoreboard').childNodes[0]
