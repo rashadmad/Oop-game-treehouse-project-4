@@ -73,12 +73,15 @@
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         this.createPhrases()
-        this.activePhrase = this.getRandomPhrase()
-        this.activePhrase.addPhraseToDisplay()
         this.healthPoints = 5;
         gameStartOverlay.className = "start"
         hearts.forEach(heart => {
             heart.childNodes[0].src = "images/liveHeart.png";
+        });
+        //reset keys
+        keys.forEach(key => {
+            key.className = "key"
+            key.disabled = false
         });
     }
     gameOver(){
