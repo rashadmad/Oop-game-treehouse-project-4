@@ -3,10 +3,15 @@
  * app.js */
 
  //create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons.
- 
+
  //Add a click event listener to the "Start Game" button which creates a new Game object and starts the game by calling the startGame() method.
  startButton.addEventListener("click", () => { 
-     //game state
+    //game state
+    if(firstGame){
+        firstGame = false
+    } else {
+        game.reset()
+    }
     game = new Game();
     game.startGame();
 
@@ -16,7 +21,7 @@
             // Disable the selected letter’s onscreen keyboard button.
             event.target.disabled = true;
             game.handleInteraction(event.target,game.activePhrase.checkLetter(event.target))
-
+            game.removeLife(game.activePhrase.checkLetter(event.target))
         });  
     })
 }); 

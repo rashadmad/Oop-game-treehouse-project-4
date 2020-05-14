@@ -16,7 +16,6 @@ const keys = document.querySelectorAll('.key')
 //Need to be able punish user for wrong selections
 const hearts = document.querySelectorAll('.tries')
 const heart = (amountOfHearts) => hearts[amountOfHearts].childNodes[0];
-let lifePoints = 5;
 
 //game end messages
 const gameOverContainer = document.getElementById('game-over-message')
@@ -25,6 +24,8 @@ const gameLoseMessage = "Sorry You Failed, Try Again?"
 
 //scoreBoard
 const scoreboard = document.getElementById('scoreboard').childNodes[0]
+
+let firstGame = true;
 
 
 
