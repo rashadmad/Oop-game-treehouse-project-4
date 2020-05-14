@@ -16,12 +16,28 @@
       this.healthPoints = healthPoints;
     }
     startGame(){
+        gameStartOverlay.className = "start"
+        //need to reset all hearts to live hearts
+        hearts.forEach(heart => {
+           heart.childNodes[0].src = "images/liveHeart.png";
+        });
+        //reset keys
+        keys.forEach(key => {
+            key.className = "key"
+            key.disabled = false
+        });
+        //remove letter boxes
+        phraseContainer.innerHTML = " "
         //hides the start screen overlay
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         this.createPhrases()
         this.activePhrase = this.getRandomPhrase()
         this.activePhrase.addPhraseToDisplay()
+        gameStartOverlay.className = "start"
+        hearts.forEach(heart => {
+            heart.childNodes[0].src = "images/liveHeart.png";
+         });
         return this.activePhrase
     }
     createPhrases(){ 
@@ -59,25 +75,6 @@
         if(this.healthPoints === 0){
             this.gameOver()
         }
-    }
-    reset(){
-        //reset game
-        this.missed = 0;
-        this.phrases = [];
-        this.activePhrase = null;
-        this.healthPoints = 5;
-        gameStartOverlay.className = "start"
-        //need to reset all hearts to live hearts
-        hearts.forEach(heart => {
-           heart.childNodes[0].src = "images/liveHeart.png";
-        });
-        //reset keys
-        keys.forEach(key => {
-            key.className = "key"
-            key.disabled = false
-        });
-        //remove letter boxes
-        phraseContainer.innerHTML = " "
     }
     gameOver(){
         setTimeout(function(){ 
