@@ -25,3 +25,8 @@
         game.removeLife(game.activePhrase.checkLetter(event.target))
     });  
 })
+
+//create a keyboard input
+window.addEventListener("keypress", event => {
+    console.log(game.activePhrase.checkLetter(event.key))
+});

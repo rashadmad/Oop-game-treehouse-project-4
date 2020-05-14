@@ -16,7 +16,7 @@ class Phrase {
          // It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
          const fillteredArray = this.fillterPhrase()
          fillteredArray.forEach(letter => {
-            if(letter === selectedLetter.innerHTML){
+            if(letter === selectedLetter.innerHTML || letter === selectedLetter){
                 doesLetterMatch = true
             } 
         })
