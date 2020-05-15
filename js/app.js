@@ -28,5 +28,6 @@
 
 //create a keyboard input
 window.addEventListener("keypress", event => {
-    console.log(game.activePhrase.checkLetter(event.key))
+    game.qwertyInteractions(event.key);
+    game.removeLife(game.activePhrase.checkLetter(event.key))
 });

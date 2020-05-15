@@ -51,6 +51,12 @@
             buttonClicked.classList.add('wrong');
         }
     }
+    qwertyInteractions(letterPressed){
+        const selectedButtonClass = 'key ' + letterPressed;
+        console.log(selectedButtonClass)
+        const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
+        clickedButton.classList.add('chosen');
+    }
     removeLife(matchFound){
         if(!matchFound){
             if(this.healthPoints === 1){
