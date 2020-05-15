@@ -51,11 +51,21 @@
             buttonClicked.classList.add('wrong');
         }
     }
-    qwertyInteractions(letterPressed){
+    qwertyInteractions(letterPressed,matchFound){
         const selectedButtonClass = 'key ' + letterPressed;
         console.log(selectedButtonClass)
         const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
         clickedButton.classList.add('chosen');
+
+        if(matchFound){
+            // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
+            showMatchedLetter(letterPressed)
+            if(checkForWin()){
+                this.gameOver()
+            }
+        } else {
+            clickedButton.classList.add('wrong');
+        }
     }
     removeLife(matchFound){
         if(!matchFound){
