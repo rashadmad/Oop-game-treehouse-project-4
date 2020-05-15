@@ -2,7 +2,12 @@
  * Project 4 - OOP Game App
  * app.js */
 
- //create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons.
+ //give user the ablity to create there own phrase
+ phraseInputField.focus()
+ submitButton.addEventListener("click", () => {
+    phraseArray.push(phraseInputField.value)  
+    phraseInputField.value = ""
+ })
 
  //Add a click event listener to the "Start Game" button which creates a new Game object and starts the game by calling the startGame() method.
  startButton.addEventListener("click", () => { 
@@ -12,6 +17,7 @@
     } else {
         game.reset()
     }
+    //create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons.
     game = new Game();
     game.startGame();
 }); 
