@@ -202,3 +202,21 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+#PhraseInputField {
+  border-radius: 25px;
+  display: block;
+  margin : 0 auto;
+  margin-top: 10px;
+  width: 400px;
+  padding: 12px 20px;
+}
+
+#btn__submit {
+  width: 200px;
+	margin: 0 auto;
+  font-size: 16px;
+  font-size: var(--font-size-medium);
+  padding: .5rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+}
