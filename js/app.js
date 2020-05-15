@@ -36,4 +36,5 @@
 window.addEventListener("keypress", event => {
     game.qwertyInteractions(event.key,game.activePhrase.checkLetter(event.key));
     game.removeLife(game.activePhrase.checkLetter(event.key))
+    event.stopPropagation();
 });
