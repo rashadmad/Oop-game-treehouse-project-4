@@ -96,7 +96,7 @@
         });
         //reset keys
         keys.forEach(key => {
-            key.className = "key"
+            key.className = "key " + key.innerHTML
             key.disabled = false
         });
     }
