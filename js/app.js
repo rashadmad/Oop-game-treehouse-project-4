@@ -34,7 +34,7 @@
 
 const qwertyClick = (event) => {
     game.qwertyInteractions(event.key,game.activePhrase.checkLetter(event.key));
-    game.removeLife(game.activePhrase.checkLetter(event.key))
+    game.removeLife(game.activePhrase.checkLetter(event.key),event.key)
     //event.key.removeEventListener("keypress", qwertyClick, false);
     
 }

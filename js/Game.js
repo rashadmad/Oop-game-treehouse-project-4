@@ -68,18 +68,29 @@
             clickedButton.classList.add('wrong');
         }
     }
-    removeLife(matchFound){
-        if(!matchFound){
-            if(this.healthPoints === 1){
-                this.gameOver()
-            } else {
-                // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-                this.healthPoints = this.healthPoints - 1
-                let amountOfHearts = this.healthPoints
-                heart(amountOfHearts).src = "images/lostHeart.png";
-                //end the game when you have ran out of health
+    removeLife(matchFound,matchedLetters){
+        let letterAlreadyMatched = false
+        console.log(alreadyMatchedLetters)
+        alreadyMatchedLetters.forEach(letter => {
+            if(letter === matchedLetters){
+                letterAlreadyMatched = true
+            } 
+        })
+        console.log(letterAlreadyMatched)
+        if(!letterAlreadyMatched){ 
+            if(!matchFound){
+                if(this.healthPoints === 1){
+                    this.gameOver()
+                } else {
+                    // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
+                    this.healthPoints = this.healthPoints - 1
+                    let amountOfHearts = this.healthPoints
+                    heart(amountOfHearts).src = "images/lostHeart.png";
+                    //end the game when you have ran out of health
+                }
             }
         }
+        alreadyMatchedLetters.push(matchedLetters);
     }
     reset(){
         //remove letter boxes

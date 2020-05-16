@@ -31,5 +31,7 @@ let firstGame = true;
 const submitButton = document.getElementById("btn__submit")
 const phraseInputField = document.getElementById("PhraseInputField")
 
+let alreadyMatchedLetters = []
+
 
 
