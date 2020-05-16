@@ -33,7 +33,6 @@
 })
 
 const qwertyClick = (event) => {
-    console.log(event)
     game.qwertyInteractions(event.key,game.activePhrase.checkLetter(event.key));
     game.removeLife(game.activePhrase.checkLetter(event.key))
     //event.key.removeEventListener("keypress", qwertyClick, false);
@@ -42,6 +41,6 @@ const qwertyClick = (event) => {
 
 //create a keyboard input
 
-document.addEventListener("keypress", qwertyClick, false);
+document.addEventListener("keyup", qwertyClick, false);
 
 
