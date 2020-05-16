@@ -32,9 +32,16 @@
     });  
 })
 
-//create a keyboard input
-window.addEventListener("keypress", event => {
+const qwertyClick = (event) => {
+    console.log(event)
     game.qwertyInteractions(event.key,game.activePhrase.checkLetter(event.key));
     game.removeLife(game.activePhrase.checkLetter(event.key))
-    event.stopPropagation();
-});
+    //event.key.removeEventListener("keypress", qwertyClick, false);
+    
+}
+
+//create a keyboard input
+
+document.addEventListener("keypress", qwertyClick, false);
+
+

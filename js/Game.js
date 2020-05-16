@@ -71,11 +71,9 @@
     removeLife(matchFound){
         if(!matchFound){
             if(this.healthPoints === 1){
-                console.log(this.healthPoints)
                 this.gameOver()
             } else {
                 // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-                console.log(this.healthPoints)
                 this.healthPoints = this.healthPoints - 1
                 let amountOfHearts = this.healthPoints
                 heart(amountOfHearts).src = "images/lostHeart.png";
