@@ -68,16 +68,18 @@
             clickedButton.classList.add('wrong');
         }
     }
+
     removeLife(matchFound,matchedLetters){
+        console.log("matchFound " + matchFound)
+        console.log("matchLetters " + matchedLetters)
         let letterAlreadyMatched = false
-        console.log(alreadyMatchedLetters)
         alreadyMatchedLetters.forEach(letter => {
             if(letter === matchedLetters){
                 letterAlreadyMatched = true
             } 
         })
-        console.log(letterAlreadyMatched)
-        if(!letterAlreadyMatched){ 
+
+        if(!letterAlreadyMatched || !matchedLetters){ 
             if(!matchFound){
                 if(this.healthPoints === 1){
                     this.gameOver()

@@ -28,7 +28,7 @@
         // Disable the selected letter’s onscreen keyboard button.
         event.target.disabled = true;
         game.handleInteraction(event.target,game.activePhrase.checkLetter(event.target))
-        game.removeLife(game.activePhrase.checkLetter(event.target))
+        game.removeLife(game.activePhrase.checkLetter(event.target),false)
     });  
 })
 
