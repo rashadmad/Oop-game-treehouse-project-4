@@ -26,6 +26,7 @@
         hearts.forEach(heart => {
             heart.childNodes[0].src = "images/liveHeart.png";
          });
+
     }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
@@ -44,7 +45,7 @@
         if(matchFound){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
             showMatchedLetter(buttonClicked.innerHTML)
-            if(checkForWin()){
+            if(this.checkForWin()){
                 this.gameOver()
             }
         } else {
@@ -54,7 +55,6 @@
     qwertyInteractions(letterPressed,matchFound){
         const selectedButtonClass = 'key ' + letterPressed;
         const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
-        console.log(clickedButton)
         clickedButton.classList.add('chosen');
         clickedButton.disabled = true;
 
@@ -68,10 +68,20 @@
             clickedButton.classList.add('wrong');
         }
     }
-
+    //need to check if we have won or not
+    checkForWin(){
+        let youWon = true;
+        const emptyLetterBoxes = document.querySelectorAll('.letter')
+        
+        emptyLetterBoxes.forEach(letter => {
+        let hiddentItem = letter.classList.contains("hide")
+            if(hiddentItem){
+                youWon = false
+            }
+        })
+        return youWon
+    }
     removeLife(matchFound,matchedLetters){
-        console.log("matchFound " + matchFound)
-        console.log("matchLetters " + matchedLetters)
         let letterAlreadyMatched = false
         alreadyMatchedLetters.forEach(letter => {
             if(letter === matchedLetters){
@@ -114,11 +124,12 @@
     }
     gameOver(){
         setTimeout(function(){ 
+            console.log(this.checkForWin())
             // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
             gameStartOverlay.style.display = "inline"
             // need to have a message to illustrate is some one has won or lost
-            gameOverContainer.innerHTML = this.checkForWin ? gameWinMessage : gameLoseMessage
-            gameStartOverlay.className = this.checkForWin ? "win" : "lose"
+            gameOverContainer.innerHTML = this.checkForWin() ? gameWinMessage : gameLoseMessage
+            gameStartOverlay.className = this.checkForWin() ? "win" : "lose"
         }, 1000);
     }
  }
