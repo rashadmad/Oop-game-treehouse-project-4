@@ -27,17 +27,4 @@ const showMatchedLetter = (letterToMatch) => {
         } 
     })
 }
-//need to check if we have won or not
-const checkForWin = () => {
-    let youWon = true;
-    const emptyLetterBoxes = document.querySelectorAll('.letter')
 
-    emptyLetterBoxes.forEach(letter => {
-    let hiddentItem = letter.classList.contains("hide")
-        if(hiddentItem){
-            youWon = false
-        }
-    })
-    console.log(youWon)
-    return youWon
-}

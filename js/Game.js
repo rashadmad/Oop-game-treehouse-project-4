@@ -28,6 +28,20 @@
          });
 
     }
+        //need to check if we have won or not
+        checkForWin(){
+            let youWon = true;
+            const emptyLetterBoxes = document.querySelectorAll('.letter')
+    
+            emptyLetterBoxes.forEach(letter => {
+            let hiddentItem = letter.classList.contains("hide")
+                if(hiddentItem){
+                    youWon = false
+                }
+            })
+            console.log(youWon)
+            return youWon
+        }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
         let myArray = phraseArray.forEach(phraseString => {
@@ -45,7 +59,7 @@
         if(matchFound){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
             showMatchedLetter(buttonClicked.innerHTML)
-            if(checkForWin()){
+            if(this.checkForWin()){
                 this.gameOver()
             }
         } else {
@@ -61,7 +75,7 @@
         if(matchFound){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
             showMatchedLetter(letterPressed)
-            if(checkForWin()){
+            if(this.checkForWin()){
                 this.gameOver()
             }
         } else {
@@ -114,9 +128,8 @@
             // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
             gameStartOverlay.style.display = "inline"
             // need to have a message to illustrate is some one has won or lost
-            gameOverContainer.innerHTML = checkForWin() ? gameWinMessage : gameLoseMessage
-            gameStartOverlay.className = checkForWin() ? "win" : "lose"
-            debugger
+            gameOverContainer.innerHTML = this.checkForWin() ? gameWinMessage : gameLoseMessage
+            gameStartOverlay.className = this.checkForWin() ? "win" : "lose"
         }, 1000);
     }
  }
