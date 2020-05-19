@@ -54,57 +54,44 @@
     //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
-    handleInteraction(buttonClicked,matchFound){
-        buttonClicked.classList.add('chosen');
-        // this method controls most of the game logic. 
-        if(matchFound){
-            // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
-            this.activePhrase.showMatchedLetter(buttonClicked.innerHTML)
-            if(this.checkForWin()){
-                this.gameOver()
+    handleInteraction(letterPressed){
+        
+        //const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
+        //add chosen class to clicked button
+        const keyButtons = document.querySelectorAll('.key')
+        keyButtons.forEach(key => {
+            if(key.innerHTML === letterPressed){
+                key.classList.add("chosen")
             }
-        } else {
-            buttonClicked.classList.add('wrong');
-        }
-    }
-    qwertyInteractions(letterPressed,matchFound){
-        const selectedButtonClass = 'key ' + letterPressed;
-        const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
-        clickedButton.classList.add('chosen');
-        clickedButton.disabled = true;
-
-        if(matchFound){
+        })
+        // this method controls most of the game logic. 
+        const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
+        if(letterPressedMatches){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
             this.activePhrase.showMatchedLetter(letterPressed)
             if(this.checkForWin()){
                 this.gameOver()
             }
+        } else if(this.healthPoints > 1){
+            keyButtons.forEach(key => {
+                    if(key.innerHTML === letterPressed){    
+                    key.classList.add('wrong');
+                }
+            })
+            //if there is life to remove then remove it 
+            this.removeLife();
+            //else if there is no life left then end the game
         } else {
-            clickedButton.classList.add('wrong');
+            this.gameOver();
         }
     }
-    removeLife(matchFound,matchedLetters){
-        let letterAlreadyMatched = false
-        alreadyMatchedLetters.forEach(letter => {
-            if(letter === matchedLetters){
-                letterAlreadyMatched = true
-            } 
-        })
-
-        if(!letterAlreadyMatched || !matchedLetters){ 
-            if(!matchFound){
-                if(this.healthPoints === 1){
-                    this.gameOver()
-                } else {
-                    // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-                    this.healthPoints = this.healthPoints - 1
-                    let amountOfHearts = this.healthPoints
-                    heart(amountOfHearts).src = "images/lostHeart.png";
-                    //end the game when you have ran out of health
-                }
-            }
-        }
-        alreadyMatchedLetters.push(matchedLetters);
+    //input: 
+    //if a match is found, 
+    removeLife(){
+        // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
+        this.healthPoints = this.healthPoints - 1
+        heart(amountOfHearts).src = "images/lostHeart.png";
+        //end the game when you have ran out of health
     }
     reset(){
         //remove letter boxes
