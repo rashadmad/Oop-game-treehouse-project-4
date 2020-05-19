@@ -28,20 +28,20 @@
          });
 
     }
-        //need to check if we have won or not
-        checkForWin(){
-            let youWon = true;
-            const emptyLetterBoxes = document.querySelectorAll('.letter')
+    //need to check if we have won or not
+    checkForWin(){
+        let youWon = true;
+        const emptyLetterBoxes = document.querySelectorAll('.letter')
     
-            emptyLetterBoxes.forEach(letter => {
-            let hiddentItem = letter.classList.contains("hide")
-                if(hiddentItem){
-                    youWon = false
-                }
-            })
-            console.log(youWon)
-            return youWon
-        }
+        emptyLetterBoxes.forEach(letter => {
+        let hiddentItem = letter.classList.contains("hide")
+            if(hiddentItem){
+                youWon = false
+            }
+        })
+        console.log(youWon)
+        return youWon
+    }
     createPhrases(){ 
         //creates and returns an array of 5 new Phrase objects, and then set the `phrases` property to call that method.
         let myArray = phraseArray.forEach(phraseString => {
@@ -49,6 +49,7 @@
             this.phrases.push(phraseObject)
         })
     }
+
     
     //this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
@@ -58,7 +59,7 @@
         // this method controls most of the game logic. 
         if(matchFound){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
-            showMatchedLetter(buttonClicked.innerHTML)
+            this.activePhrase.showMatchedLetter(buttonClicked.innerHTML)
             if(this.checkForWin()){
                 this.gameOver()
             }
@@ -74,7 +75,7 @@
 
         if(matchFound){
             // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
-            showMatchedLetter(letterPressed)
+            this.activePhrase.showMatchedLetter(letterPressed)
             if(this.checkForWin()){
                 this.gameOver()
             }

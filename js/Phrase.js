@@ -33,4 +33,14 @@ class Phrase {
         }
     })
    } 
+   //need to be able to show a matched letter
+   showMatchedLetter = (letterToMatch) => {
+        const emptyLetterBoxes = document.querySelectorAll('.letter')
+        emptyLetterBoxes.forEach(letter => {
+            if (letter.classList.contains(letterToMatch)){
+                letter.classList.remove("hide")
+                letter.classList.add("show")
+            } 
+        })
+    }
 }
