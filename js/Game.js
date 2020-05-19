@@ -124,7 +124,7 @@
         });
     }
     gameOver(){
-        setTimeout(function(){ 
+        setTimeout( () => { 
             // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
             gameStartOverlay.style.display = "inline"
             // need to have a message to illustrate is some one has won or lost
