@@ -55,19 +55,17 @@
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
     handleInteraction(letterPressed){
-        
+        const selectedButtonClassName = "key " + letterPressed
+        const selectedButtonCollection = document.getElementsByClassName(selectedButtonClassName)
+        const removeFrom = selectedButtonCollection[0];
+        console.log(removeFrom)
         //const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
-        //add chosen class to clicked button
-        const keyButtons = document.querySelectorAll('.key')
-        keyButtons.forEach(key => {
-      
-            if(key.innerHTML === letterPressed){
-
-                key.classList.add("chosen")
-                debugger
-            }
-        })
+        //find out which button have been pressed
         
+        console.log(selectedButton)
+        const buttonPressed = keyButtons.filter(key => key.innerHTML === letterPressed)
+        console.log("the button pressed is" + buttonPressed)
+  
         // this method controls most of the game logic. 
         const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
         if(letterPressedMatches){
