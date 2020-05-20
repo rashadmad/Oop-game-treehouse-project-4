@@ -5,13 +5,13 @@
  //to create a Game class with methods for starting and ending the game, handling interactions, getting a random phrase, checking for a win, and removing a life from the scoreboard.
  //The class should include a constructor that initializes the following properties:
  class Game {
-    constructor (missed= 0, phrases= [], activePhrase= null, missed= 5) {
-    //missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.
-      this.missed = missed;
-    //phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
-      this.phrases = phrases;
-    //activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
-      this.activePhrase = activePhrase;
+        constructor (missed= 5, phrases= [], activePhrase= null) {
+        //missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.
+        this.missed = missed;
+        //phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
+        this.phrases = phrases;
+        //activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
+        this.activePhrase = activePhrase;
     }
     startGame(){
         //hides the start screen overlay
