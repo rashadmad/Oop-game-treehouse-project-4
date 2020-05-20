@@ -2,6 +2,8 @@
  * Project 4 - OOP Game App
  * app.js */
 
+game = new Game();
+
  //give user the ablity to create there own phrase
  phraseInputField.focus()
  submitButton.addEventListener("click", () => {
