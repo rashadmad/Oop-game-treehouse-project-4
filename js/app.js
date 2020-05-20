@@ -33,14 +33,14 @@ keys.forEach(key => {
     });  
 })
 
-const qwertyClick = (event) => {
-    game.handleInteraction(event.key);
-    //event.key.removeEventListener("keypress", qwertyClick, false);
+// const qwertyClick = (event) => {
+//     game.handleInteraction(event.key);
+//     //event.key.removeEventListener("keypress", qwertyClick, false);
     
-}
+// }
 
 //create a keyboard input
 
-document.addEventListener("keyup", qwertyClick, false);
+// document.addEventListener("keyup", qwertyClick, false);
 
 

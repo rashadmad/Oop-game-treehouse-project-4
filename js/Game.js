@@ -60,10 +60,14 @@
         //add chosen class to clicked button
         const keyButtons = document.querySelectorAll('.key')
         keyButtons.forEach(key => {
+      
             if(key.innerHTML === letterPressed){
+
                 key.classList.add("chosen")
+                debugger
             }
         })
+        
         // this method controls most of the game logic. 
         const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
         if(letterPressedMatches){
@@ -74,12 +78,20 @@
             }
         } else if(this.healthPoints > 1){
             keyButtons.forEach(key => {
-                    if(key.innerHTML === letterPressed){    
+                
+                //has this letter been chosen
+                if(key.innerHTML === letterPressed){   
+                     debugger
                     key.classList.add('wrong');
+                    
+                }
+                const alreadyChosenKey = key.classList.contains('chosen');
+                if(!alreadyChosenKey){
+                    //if there is life to remove then remove it 
+                this.removeLife();
                 }
             })
-            //if there is life to remove then remove it 
-            this.removeLife();
+            
             //else if there is no life left then end the game
         } else {
             this.gameOver();
@@ -90,6 +102,8 @@
     removeLife(){
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
         this.healthPoints = this.healthPoints - 1
+        const amountOfHearts = this.healthPoints;
+        debugger
         heart(amountOfHearts).src = "images/lostHeart.png";
         //end the game when you have ran out of health
     }
