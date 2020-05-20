@@ -5,15 +5,13 @@
  //to create a Game class with methods for starting and ending the game, handling interactions, getting a random phrase, checking for a win, and removing a life from the scoreboard.
  //The class should include a constructor that initializes the following properties:
  class Game {
-    constructor (missed= 0, phrases= [], activePhrase= null, healthPoints= 5) {
+    constructor (missed= 0, phrases= [], activePhrase= null, missed= 5) {
     //missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.
       this.missed = missed;
     //phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
       this.phrases = phrases;
     //activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
       this.activePhrase = activePhrase;
-    //need to chart health
-      this.healthPoints = healthPoints;
     }
     startGame(){
         //hides the start screen overlay
@@ -54,11 +52,15 @@
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
     handleInteraction(letterPressed){
+        //need to select the button that is represented by the letter pressed
         const selectedButtonClassName = "key " + letterPressed
         const selectedButtonCollection = document.getElementsByClassName(selectedButtonClassName)
         const selectedButton = selectedButtonCollection[0];
+        //disable selected button
+        selectedButton.disabled = true;
+
         //we need to check how many hearts are left
-        const heartsEmpty = this.healthPoints === 1; 
+        const heartsEmpty = this.missed === 1; 
         //check if a element has the chosen class
         const letterHasAlreadyBeenPressed = selectedButton.classList.contains('chosen');
 
@@ -87,8 +89,8 @@
     //if a match is found, 
     removeLife(){
         // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-        this.healthPoints = this.healthPoints - 1
-        const amountOfHearts = this.healthPoints;
+        this.missed = this.missed - 1
+        const amountOfHearts = this.missed;
         heart(amountOfHearts).src = "images/lostHeart.png";
         //end the game when you have ran out of health
     }
@@ -99,7 +101,7 @@
         gameStartOverlay.style.display = "none"
         //calls the getRandomPhrase() method  &  sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
         this.createPhrases()
-        this.healthPoints = 5;
+        this.missed = 5;
         gameStartOverlay.className = "start"
         hearts.forEach(heart => {
             heart.childNodes[0].src = "images/liveHeart.png";

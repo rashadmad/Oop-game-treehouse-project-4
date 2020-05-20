@@ -28,7 +28,6 @@ game = new Game();
 keys.forEach(key => {
     key.addEventListener("click", (event) => { 
         // Disable the selected letter’s onscreen keyboard button.
-        event.target.disabled = true;
         const letterPressed = event.target.innerHTML;
         game.handleInteraction(letterPressed)
         
@@ -37,7 +36,6 @@ keys.forEach(key => {
 
 const qwertyClick = (event) => {
     game.handleInteraction(event.key);
-    //event.key.removeEventListener("keypress", qwertyClick, false);
     
 }
 
