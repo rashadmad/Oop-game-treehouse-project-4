@@ -57,15 +57,12 @@
     handleInteraction(letterPressed){
         const selectedButtonClassName = "key " + letterPressed
         const selectedButtonCollection = document.getElementsByClassName(selectedButtonClassName)
-        const removeFrom = selectedButtonCollection[0];
-        console.log(removeFrom)
-        //const clickedButton = document.getElementsByClassName(selectedButtonClass)[0];
-        //find out which button have been pressed
-        
+        const selectedButton = selectedButtonCollection[0];
+
+        //add chosen class to selected button
+        selectedButton.classList.add("chosen")
         console.log(selectedButton)
-        const buttonPressed = keyButtons.filter(key => key.innerHTML === letterPressed)
-        console.log("the button pressed is" + buttonPressed)
-  
+
         // this method controls most of the game logic. 
         const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
         if(letterPressedMatches){
