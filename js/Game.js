@@ -68,17 +68,14 @@
         const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
         //add chosen class to selected button
         if(!letterHasAlreadyBeenPressed){
-            selectedButton.classList.add('chosen');
                 if(letterPressedMatches){
                     // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
                     this.activePhrase.showMatchedLetter(letterPressed)
+                    selectedButton.classList.add('chosen');
                     if(this.checkForWin()){
                         this.gameOver()
                     }
                 } else { 
-                    if(heartsEmpty){
-                        this.gameOver()
-                    }
                     //else if there is no life left then end the game
                     selectedButton.classList.add('wrong');
                     this.removeLife()
@@ -93,6 +90,9 @@
         const amountOfHearts = this.missed;
         heart(amountOfHearts).src = "images/lostHeart.png";
         //end the game when you have ran out of health
+        if (this.missed === 0){
+            gameOver()
+        }
     }
     reset(){
         //remove letter boxes
