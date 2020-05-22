@@ -24,6 +24,7 @@
 }
 
 body {
+  background-image: url("../images/stripes-light.png");
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
@@ -48,11 +49,11 @@ h1 {
 
 button {
   margin: 6px;
-  border: 1px solid transparent;
   padding: .5rem 1rem;
-  color: var(--color-keys);
+  color: var(--color-neutral-light);
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
+  background-color: transparent;
+  border: 2px solid var(--color-neutral-light);
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
@@ -107,8 +108,6 @@ button {
   width: 15px;
 }
 
-
-
 .show {
   color: #fff;
   background-color: #4ac0d5;
@@ -131,15 +130,17 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  border: 2px solid var(--color-win);
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: var(--color-win);
+  background-color: var(--color-keys-light);
 }
 
 .wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+  border: 2px solid var(--color-lose);
+  color: var(--color-lose);
+  background-color: var(--color-keys-light);
 }
 
 .btn__reset {

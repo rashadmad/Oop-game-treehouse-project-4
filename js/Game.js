@@ -91,7 +91,7 @@
         heart(amountOfHearts).src = "images/lostHeart.png";
         //end the game when you have ran out of health
         if (this.missed === 0){
-            gameOver()
+            this.gameOver()
         }
     }
     reset(){
