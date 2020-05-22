@@ -52,22 +52,24 @@
     getRandomPhrase = () => this.phrases[generateRandomNumber(phraseArray.length,0)] 
        
     handleInteraction(letterPressed){
+
         //need to select the button that is represented by the letter pressed
         const selectedButtonClassName = "key " + letterPressed
         const selectedButtonCollection = document.getElementsByClassName(selectedButtonClassName)
         const selectedButton = selectedButtonCollection[0];
         //disable selected button
         selectedButton.disabled = true;
-
+        
         //we need to check how many hearts are left
         const heartsEmpty = this.missed === 1; 
         //check if a element has the chosen class
-        const letterHasAlreadyBeenPressed = selectedButton.classList.contains('chosen');
+        const letterHasAlreadyBeenChosen = selectedButton.classList.contains('chosen');
+        const letterIsIncorrect = selectedButton.classList.contains('wrong');
 
         // we need to check for a match this returns true on a found match
         const letterPressedMatches = game.activePhrase.checkLetter(letterPressed);
         //add chosen class to selected button
-        if(!letterHasAlreadyBeenPressed){
+        if(!letterHasAlreadyBeenChosen && !letterIsIncorrect){
                 if(letterPressedMatches){
                     // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
                     this.activePhrase.showMatchedLetter(letterPressed)
